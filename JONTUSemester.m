@@ -6,9 +6,9 @@
 //  Copyright 2010 ORNYX. All rights reserved.
 //
 
-#import "NTUSemester.h"
-#import "NTUClass.h"
-#import "NTUCourse.h"
+#import "JONTUSemester.h"
+#import "JONTUClass.h"
+#import "JONTUCourse.h"
 #import "RegexKitLite.h"
 #import "NSString+htmlentitiesaddition.h"
 
@@ -16,7 +16,7 @@
 #define REGEX_TABLE @"<TABLE  border>\\s<TR>\\s<TD valign=\"BOTTOM\"><B>Course</B></TD>\\s<TD valign=\"BOTTOM\"><B>AU</B></TD>\\s<TD valign=\"BOTTOM\"><B>Course<BR>Type</B></TD>\\s<TD valign=\"BOTTOM\"><B>S/U Grade option</B></TD>\\s<TD valign=\"BOTTOM\"><B>General<BR>Prescribed<BR>Type</B></TD>\\s<TD valign=\"BOTTOM\"><B>Index<BR>Number</B></TD>\\s<TD valign=\"BOTTOM\"><B>Status</B></TD>\\s<TD valign=\"BOTTOM\"><B>Choice</B></TD>\\s<TD valign=\"BOTTOM\"><B>Class<BR>Type</B></TD>\\s<TD valign=\"BOTTOM\"><B>Group</B></TD>\\s<TD valign=\"BOTTOM\"><B>Day</B></TD>\\s<TD valign=\"BOTTOM\"><B>Time</B></TD>\\s<TD valign=\"BOTTOM\"><B>Venue</B></TD>\\s<TD valign=\"BOTTOM\"><B>Remark</B></TD>\\s</TR>([\\s\\S]*)</TABLE>"
 
 #define REGEX_TABLE_ROW @"<TR><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD></TR>"
-@implementation NTUSemester
+@implementation JONTUSemester
 
 @synthesize name, year, semester, courses;
 
@@ -50,11 +50,10 @@
 	if ([self auth]) {
 
 		NSMutableDictionary *postvalues = [NSMutableDictionary dictionary];
-		[postvalues setValue:@"" forKey:@"p2"];
 		[postvalues setValue:[NSString stringWithFormat:@"%i",self.year] forKey:@"acad"];
 		[postvalues setValue:self.semester forKey:@"semester"];
 		
-		NSString *html = [[NSString alloc] initWithData:[self sendAsyncXHRToURL:XHR_URL PostValues:postvalues] encoding:NSUTF8StringEncoding];
+		NSString *html = [[NSString alloc] initWithData:[self sendSyncXHRToURL:[NSURL URLWithString:XHR_URL] postValues:postvalues] encoding:NSUTF8StringEncoding];
 		NSArray *timetablelines = [[[[html stringByMatching:REGEX_TABLE capture:1] stringByReplacingOccurrencesOfString:@"\n" withString:@""] removeHTMLEntities] componentsMatchedByRegex:REGEX_TABLE_ROW];
 		[html release];
 		
@@ -67,7 +66,7 @@
 			
 			// handle if its a row with course information
 			if (![[timetableitems objectAtIndex:1] isEqualToString:@""]) {
-				NTUCourse *t_course = [[NTUCourse alloc] initWithName:[timetableitems objectAtIndex:1]
+				JONTUCourse *t_course = [[JONTUCourse alloc] initWithName:[timetableitems objectAtIndex:1]
 														academicUnits:[[timetableitems objectAtIndex:2] intValue]
 														   courseType:[timetableitems objectAtIndex:3]
 															 suOption:[timetableitems objectAtIndex:4]
@@ -81,7 +80,7 @@
 			}
 			
 			// deal with class information
-			NTUClass *t_class = [[NTUClass alloc] initWithType:[timetableitems objectAtIndex:9]
+			JONTUClass *t_class = [[JONTUClass alloc] initWithType:[timetableitems objectAtIndex:9]
 													classGroup:[timetableitems objectAtIndex:10]
 														 venue:[timetableitems objectAtIndex:13]
 														remark:[timetableitems objectAtIndex:14] 
@@ -90,7 +89,7 @@
 			[t_classes addObject:t_class];		
 			[t_class release], t_class = nil;	
 			
-			((NTUCourse *)[t_courses lastObject]).classes = t_classes;
+			((JONTUCourse *)[t_courses lastObject]).classes = t_classes;
 		}
 		courses = [t_courses retain];
 		

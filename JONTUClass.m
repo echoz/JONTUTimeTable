@@ -6,14 +6,14 @@
 //  Copyright 2010 ORNYX. All rights reserved.
 //
 
-#import "NTUClass.h"
+#import "JONTUClass.h"
 #import "RegexKitLite.h"
 
 #define REGEX_TIME_SUBUNIT @"([0-9]{2})([0-9]{2})-([0-9]{2})([0-9]{2})"
 #define REGEX_TIME_STRING @"([0-9]{4})-([0-9]{4})"
 #define REGEX_RECURRENCE_THROUGH @"Wk([0-9]+)-([0-9]+)"
 
-@implementation NTUClass
+@implementation JONTUClass
 @synthesize type, group, venue, remark;
 
 -(id)initWithType:(NSString *)classtype classGroup:(NSString *)classgroup venue:(NSString *)classvenue remark:(NSString *)classremark day:(NSString *)classday time:(NSString *)classtime {

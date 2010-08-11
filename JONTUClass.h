@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NTUClass : NSObject <NSCoding> {
+@interface JONTUClass : NSObject <NSCoding> {
 	NSString *type;
 	NSString *group;
 	NSString *__day;

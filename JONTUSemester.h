@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NTUAuth.h"
+#import "JONTUAuth.h"
 
-@interface NTUSemester : NTUAuth <NSCoding> {
+@interface JONTUSemester : JONTUAuth <NSCoding> {
 	NSString *name;
 	NSUInteger year;
 	NSString *semester;

@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NTUClass.h"
 
-@interface NTUCourse : NSObject <NSCoding> {
+@interface JONTUCourse : NSObject <NSCoding> {
 	NSString *name;
 	NSUInteger au;
 	NSString *type;

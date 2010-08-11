@@ -6,10 +6,10 @@
 //  Copyright 2010 ORNYX. All rights reserved.
 //
 
-#import "NTUCourse.h"
+#import "JONTUCourse.h"
 
 
-@implementation NTUCourse
+@implementation JONTUCourse
 
 @synthesize name, au, type, su, gepre, index, status, choice, classes;
 

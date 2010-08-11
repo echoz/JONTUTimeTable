@@ -1,0 +1,278 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3FF0788312130551006AE7E4 /* JONTUAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0788012130551006AE7E4 /* JONTUAuth.m */; };
+		3FF0788412130551006AE7E4 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0788212130551006AE7E4 /* RegexKitLite.m */; };
+		3FF0788F12130569006AE7E4 /* NSString+htmlentitiesaddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0788812130569006AE7E4 /* NSString+htmlentitiesaddition.m */; };
+		3FF0789B121305B6006AE7E4 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF0789A121305B6006AE7E4 /* libicucore.dylib */; };
+		3FF078B11213069D006AE7E4 /* JONTUClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF078AB1213069D006AE7E4 /* JONTUClass.m */; };
+		3FF078B21213069D006AE7E4 /* JONTUCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF078AD1213069D006AE7E4 /* JONTUCourse.m */; };
+		3FF078B31213069D006AE7E4 /* JONTUSemester.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF078AF1213069D006AE7E4 /* JONTUSemester.m */; };
+		8DD76F9A0486AA7600D96B5E /* JONTUTimeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* JONTUTimeTable.m */; settings = {ATTRIBUTES = (); }; };
+		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
+		8DD76F9F0486AA7600D96B5E /* JONTUTimeTable.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859EA3029092ED04C91782 /* JONTUTimeTable.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F9E0486AA7600D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8DD76F9F0486AA7600D96B5E /* JONTUTimeTable.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		08FB7796FE84155DC02AAC07 /* JONTUTimeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JONTUTimeTable.m; sourceTree = "<group>"; };
+		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32A70AAB03705E1F00C91783 /* JONTUTimeTable_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JONTUTimeTable_Prefix.pch; sourceTree = "<group>"; };
+		3FF0787F12130551006AE7E4 /* JONTUAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JONTUAuth.h; path = JONTUAuth/JONTUAuth.h; sourceTree = "<group>"; };
+		3FF0788012130551006AE7E4 /* JONTUAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JONTUAuth.m; path = JONTUAuth/JONTUAuth.m; sourceTree = "<group>"; };
+		3FF0788112130551006AE7E4 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = JONTUAuth/RegexKitLite.h; sourceTree = "<group>"; };
+		3FF0788212130551006AE7E4 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = JONTUAuth/RegexKitLite.m; sourceTree = "<group>"; };
+		3FF0788712130569006AE7E4 /* NSString+htmlentitiesaddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+htmlentitiesaddition.h"; sourceTree = "<group>"; };
+		3FF0788812130569006AE7E4 /* NSString+htmlentitiesaddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+htmlentitiesaddition.m"; sourceTree = "<group>"; };
+		3FF0789A121305B6006AE7E4 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		3FF078AA1213069D006AE7E4 /* JONTUClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JONTUClass.h; sourceTree = "<group>"; };
+		3FF078AB1213069D006AE7E4 /* JONTUClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JONTUClass.m; sourceTree = "<group>"; };
+		3FF078AC1213069D006AE7E4 /* JONTUCourse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JONTUCourse.h; sourceTree = "<group>"; };
+		3FF078AD1213069D006AE7E4 /* JONTUCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JONTUCourse.m; sourceTree = "<group>"; };
+		3FF078AE1213069D006AE7E4 /* JONTUSemester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JONTUSemester.h; sourceTree = "<group>"; };
+		3FF078AF1213069D006AE7E4 /* JONTUSemester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JONTUSemester.m; sourceTree = "<group>"; };
+		8DD76FA10486AA7600D96B5E /* JONTUTimeTable */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JONTUTimeTable; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6859EA3029092ED04C91782 /* JONTUTimeTable.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = JONTUTimeTable.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F9B0486AA7600D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */,
+				3FF0789B121305B6006AE7E4 /* libicucore.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* JONTUTimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				3FF078851213055B006AE7E4 /* Classes */,
+				3FF0787B12130544006AE7E4 /* JONTUAuth */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859EA2029092E104C91782 /* Documentation */,
+				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = JONTUTimeTable;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				32A70AAB03705E1F00C91783 /* JONTUTimeTable_Prefix.pch */,
+				08FB7796FE84155DC02AAC07 /* JONTUTimeTable.m */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				08FB779EFE84155DC02AAC07 /* Foundation.framework */,
+				3FF0789A121305B6006AE7E4 /* libicucore.dylib */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76FA10486AA7600D96B5E /* JONTUTimeTable */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3FF0787B12130544006AE7E4 /* JONTUAuth */ = {
+			isa = PBXGroup;
+			children = (
+				3FF0787F12130551006AE7E4 /* JONTUAuth.h */,
+				3FF0788012130551006AE7E4 /* JONTUAuth.m */,
+				3FF0788112130551006AE7E4 /* RegexKitLite.h */,
+				3FF0788212130551006AE7E4 /* RegexKitLite.m */,
+			);
+			name = JONTUAuth;
+			sourceTree = "<group>";
+		};
+		3FF078851213055B006AE7E4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3FF078AA1213069D006AE7E4 /* JONTUClass.h */,
+				3FF078AB1213069D006AE7E4 /* JONTUClass.m */,
+				3FF078AC1213069D006AE7E4 /* JONTUCourse.h */,
+				3FF078AD1213069D006AE7E4 /* JONTUCourse.m */,
+				3FF078AE1213069D006AE7E4 /* JONTUSemester.h */,
+				3FF078AF1213069D006AE7E4 /* JONTUSemester.m */,
+				3FF0788712130569006AE7E4 /* NSString+htmlentitiesaddition.h */,
+				3FF0788812130569006AE7E4 /* NSString+htmlentitiesaddition.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		C6859EA2029092E104C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859EA3029092ED04C91782 /* JONTUTimeTable.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F960486AA7600D96B5E /* JONTUTimeTable */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "JONTUTimeTable" */;
+			buildPhases = (
+				8DD76F990486AA7600D96B5E /* Sources */,
+				8DD76F9B0486AA7600D96B5E /* Frameworks */,
+				8DD76F9E0486AA7600D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JONTUTimeTable;
+			productInstallPath = "$(HOME)/bin";
+			productName = JONTUTimeTable;
+			productReference = 8DD76FA10486AA7600D96B5E /* JONTUTimeTable */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "JONTUTimeTable" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* JONTUTimeTable */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F960486AA7600D96B5E /* JONTUTimeTable */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F990486AA7600D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD76F9A0486AA7600D96B5E /* JONTUTimeTable.m in Sources */,
+				3FF0788312130551006AE7E4 /* JONTUAuth.m in Sources */,
+				3FF0788412130551006AE7E4 /* RegexKitLite.m in Sources */,
+				3FF0788F12130569006AE7E4 /* NSString+htmlentitiesaddition.m in Sources */,
+				3FF078B11213069D006AE7E4 /* JONTUClass.m in Sources */,
+				3FF078B21213069D006AE7E4 /* JONTUCourse.m in Sources */,
+				3FF078B31213069D006AE7E4 /* JONTUSemester.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB927508733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = JONTUTimeTable_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = JONTUTimeTable;
+			};
+			name = Debug;
+		};
+		1DEB927608733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = JONTUTimeTable_Prefix.pch;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = JONTUTimeTable;
+			};
+			name = Release;
+		};
+		1DEB927908733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB927A08733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "JONTUTimeTable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927508733DD40010E9CD /* Debug */,
+				1DEB927608733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "JONTUTimeTable" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927908733DD40010E9CD /* Debug */,
+				1DEB927A08733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}
