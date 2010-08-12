@@ -14,8 +14,8 @@
 
 #define XHR_URL @"https://wish.wis.ntu.edu.sg/pls/webexe/aus_stars_check.check_subject_web2"
 #define REGEX_TABLE @"<TABLE  border>\\s<TR>\\s<TD valign=\"BOTTOM\"><B>Course</B></TD>\\s<TD valign=\"BOTTOM\"><B>AU</B></TD>\\s<TD valign=\"BOTTOM\"><B>Course<BR>Type</B></TD>\\s<TD valign=\"BOTTOM\"><B>S/U Grade option</B></TD>\\s<TD valign=\"BOTTOM\"><B>General<BR>Prescribed<BR>Type</B></TD>\\s<TD valign=\"BOTTOM\"><B>Index<BR>Number</B></TD>\\s<TD valign=\"BOTTOM\"><B>Status</B></TD>\\s<TD valign=\"BOTTOM\"><B>Choice</B></TD>\\s<TD valign=\"BOTTOM\"><B>Class<BR>Type</B></TD>\\s<TD valign=\"BOTTOM\"><B>Group</B></TD>\\s<TD valign=\"BOTTOM\"><B>Day</B></TD>\\s<TD valign=\"BOTTOM\"><B>Time</B></TD>\\s<TD valign=\"BOTTOM\"><B>Venue</B></TD>\\s<TD valign=\"BOTTOM\"><B>Remark</B></TD>\\s</TR>([\\s\\S]*)</TABLE>"
-
 #define REGEX_TABLE_ROW @"<TR><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD><TD>([ ,/\\w-]*)</TD></TR>"
+#define REGEX_SEM_LIST @"<FORM ACTION=\"aus_stars_check.check_subject_web2\" METHOD=\"POST\">\\s*<INPUT TYPE=\"button\" VALUE=\"(.*)\" onClick=\"submit\\(\\)\">\\s*<INPUT TYPE=\"hidden\" NAME=\"p1\" VALUE=\".*\">\\s*<INPUT TYPE=\"hidden\" NAME=\"p2\" VALUE=\".*\">\\s*<INPUT TYPE=\"hidden\" NAME=\"acad\" VALUE=\"([0-9]+)\">\\s*<INPUT TYPE=\"hidden\" NAME=\"semester\" VALUE=\"(.+)\">\\s*</FORM>"
 @implementation JONTUSemester
 
 @synthesize name, year, semester, courses;
@@ -44,6 +44,37 @@
 	[aCoder encodeObject:semester forKey:@"semester"];
 	[aCoder encodeObject:courses forKey:@"courses"];
 	[aCoder encodeInt:year forKey:@"year"];
+}
+
++(NSArray *)listSemestersOfUser:(NSString *)user password:(NSString *)pass domain:(NSString *)domain {
+	JONTUSemester *sem = [[JONTUSemester alloc] init];
+	NSMutableArray *semList = [NSMutableArray array];
+	[sem setUser:user];
+	[sem setPass:pass];
+	[sem setDomain:domain];
+	
+	if ([sem auth]) {
+		NSString *html = [[NSString alloc] initWithData:[sem sendSyncXHRToURL:[NSURL URLWithString:XHR_URL] postValues:[NSDictionary dictionary]] encoding:NSUTF8StringEncoding];
+		NSArray *sems = [html componentsMatchedByRegex:REGEX_SEM_LIST];
+		
+		NSArray *semDetail;
+		JONTUSemester *newSem = nil;
+		for (int i=0;i<[sems count];i++) {
+			semDetail = [[sems objectAtIndex:i] captureComponentsMatchedByRegex:REGEX_SEM_LIST];			
+			newSem = [[JONTUSemester alloc] initWithName:[semDetail objectAtIndex:1] year:[[semDetail objectAtIndex:2] intValue] semester:[semDetail objectAtIndex:3]];
+			[newSem setUser:user];
+			[newSem setPass:pass];
+			[newSem setDomain:domain];
+			
+			[semList addObject:newSem];
+			[newSem release], newSem = nil;
+		}
+		
+		[html release];
+	} 
+	
+	[sem release];
+	return semList;
 }
 
 -(void)parse {

@@ -69,8 +69,8 @@
 		08FB7794FE84155DC02AAC07 /* JONTUTimeTable */ = {
 			isa = PBXGroup;
 			children = (
-				3FF078851213055B006AE7E4 /* Classes */,
 				3FF0787B12130544006AE7E4 /* JONTUAuth */,
+				3FF078851213055B006AE7E4 /* Classes */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6859EA2029092E104C91782 /* Documentation */,
 				08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */,
@@ -119,14 +119,14 @@
 		3FF078851213055B006AE7E4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3FF0788712130569006AE7E4 /* NSString+htmlentitiesaddition.h */,
+				3FF0788812130569006AE7E4 /* NSString+htmlentitiesaddition.m */,
 				3FF078AA1213069D006AE7E4 /* JONTUClass.h */,
 				3FF078AB1213069D006AE7E4 /* JONTUClass.m */,
 				3FF078AC1213069D006AE7E4 /* JONTUCourse.h */,
 				3FF078AD1213069D006AE7E4 /* JONTUCourse.m */,
 				3FF078AE1213069D006AE7E4 /* JONTUSemester.h */,
 				3FF078AF1213069D006AE7E4 /* JONTUSemester.m */,
-				3FF0788712130569006AE7E4 /* NSString+htmlentitiesaddition.h */,
-				3FF0788812130569006AE7E4 /* NSString+htmlentitiesaddition.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
