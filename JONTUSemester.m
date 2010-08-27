@@ -54,7 +54,7 @@
 	[sem setDomain:domain];
 	
 	if ([sem auth]) {
-		NSString *html = [[NSString alloc] initWithData:[sem sendSyncXHRToURL:[NSURL URLWithString:XHR_URL] postValues:[NSDictionary dictionary]] encoding:NSUTF8StringEncoding];
+		NSString *html = [[NSString alloc] initWithData:[sem sendSyncXHRToURL:[NSURL URLWithString:XHR_URL] postValues:[NSDictionary dictionary] withToken:YES] encoding:NSUTF8StringEncoding];
 		NSArray *sems = [html componentsMatchedByRegex:REGEX_SEM_LIST];
 		
 		NSArray *semDetail;
@@ -84,7 +84,7 @@
 		[postvalues setValue:[NSString stringWithFormat:@"%i",self.year] forKey:@"acad"];
 		[postvalues setValue:self.semester forKey:@"semester"];
 		
-		NSString *html = [[NSString alloc] initWithData:[self sendSyncXHRToURL:[NSURL URLWithString:XHR_URL] postValues:postvalues] encoding:NSUTF8StringEncoding];
+		NSString *html = [[NSString alloc] initWithData:[self sendSyncXHRToURL:[NSURL URLWithString:XHR_URL] postValues:postvalues withToken:YES] encoding:NSUTF8StringEncoding];
 		NSArray *timetablelines = [[[[html stringByMatching:REGEX_TABLE capture:1] stringByReplacingOccurrencesOfString:@"\n" withString:@""] removeHTMLEntities] componentsMatchedByRegex:REGEX_TABLE_ROW];
 		[html release];
 		
