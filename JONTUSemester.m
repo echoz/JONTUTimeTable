@@ -71,7 +71,9 @@
 		}
 		
 		[html release];
-	} 
+	} else {
+		semList = nil;
+	}
 	
 	[sem release];
 	return semList;
