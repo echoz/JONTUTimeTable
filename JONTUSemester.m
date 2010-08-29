@@ -53,10 +53,14 @@
 	[sem setPass:pass];
 	[sem setDomain:domain];
 	
+	NSLog(@"JONTUTimeTable: Begin login");
+	
 	if ([sem auth]) {
+		NSLog(@"JONTUTimeTable: Login success. Getting list of semesters");
 		NSString *html = [[NSString alloc] initWithData:[sem sendSyncXHRToURL:[NSURL URLWithString:XHR_URL] postValues:[NSDictionary dictionary] withToken:YES] encoding:NSUTF8StringEncoding];
 		NSArray *sems = [html componentsMatchedByRegex:REGEX_SEM_LIST];
-		
+
+		NSLog(@"JONTUTimeTable: Creating Objects");
 		NSArray *semDetail;
 		JONTUSemester *newSem = nil;
 		for (int i=0;i<[sems count];i++) {
@@ -72,12 +76,19 @@
 		
 		[html release];
 	} else {
+		NSLog(@"JONTUTimeTable: Login failure");
+
 		semList = nil;
 	}
 	
 	[sem release];
 	return semList;
 }
+
+-(NSString *)description {
+	return [NSString stringWithFormat:@"<NTUSemester: %@ with %i courses>",self.name, [self.courses count]];
+}
+
 
 -(void)parse {
 	if ([self auth]) {
@@ -86,6 +97,8 @@
 		[postvalues setValue:[NSString stringWithFormat:@"%i",self.year] forKey:@"acad"];
 		[postvalues setValue:self.semester forKey:@"semester"];
 		
+		NSLog(@"JONTUTimeTable: Retrieve timetable");
+
 		NSString *html = [[NSString alloc] initWithData:[self sendSyncXHRToURL:[NSURL URLWithString:XHR_URL] postValues:postvalues withToken:YES] encoding:NSUTF8StringEncoding];
 		NSArray *timetablelines = [[[[html stringByMatching:REGEX_TABLE capture:1] stringByReplacingOccurrencesOfString:@"\n" withString:@""] removeHTMLEntities] componentsMatchedByRegex:REGEX_TABLE_ROW];
 		[html release];
@@ -99,6 +112,8 @@
 			
 			// handle if its a row with course information
 			if (![[timetableitems objectAtIndex:1] isEqualToString:@""]) {
+				NSLog(@"JONTUTimeTable: Found course %@", [[timetableitems objectAtIndex:1]);
+
 				JONTUCourse *t_course = [[JONTUCourse alloc] initWithName:[timetableitems objectAtIndex:1]
 														academicUnits:[[timetableitems objectAtIndex:2] intValue]
 														   courseType:[timetableitems objectAtIndex:3]
@@ -113,6 +128,8 @@
 			}
 			
 			// deal with class information
+		   NSLog(@"JONTUTimeTable: Found class %@", [[timetableitems objectAtIndex:9]);
+
 			JONTUClass *t_class = [[JONTUClass alloc] initWithType:[timetableitems objectAtIndex:9]
 													classGroup:[timetableitems objectAtIndex:10]
 														 venue:[timetableitems objectAtIndex:13]
