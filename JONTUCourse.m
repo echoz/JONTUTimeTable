@@ -63,6 +63,10 @@
 	return [NSString stringWithFormat:@"<NTUCourse: %@ with %i classes>",self.name, [self.classes count]];
 }
 
+-(NSUInteger)classesCount {
+	return [self.classes count];
+}
+
 -(void)dealloc {
 	[name release], name = nil;
 	[type release], type = nil;

@@ -32,4 +32,5 @@
 @property (nonatomic, retain) NSArray *classes;
 
 -(id)initWithName:(NSString *)coursename academicUnits:(NSUInteger) acadunit courseType:(NSString *)coursetype suOption:(NSString *)suopt gePreType:(NSString *)gepretype indexNumber:(NSString *)indexNumber registrationStatus:(NSString *)regstat choice:(NSUInteger) coursechoice;
+-(NSUInteger)classesCount;
 @end

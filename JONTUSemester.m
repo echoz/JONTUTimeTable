@@ -93,6 +93,9 @@
 	return [NSString stringWithFormat:@"<NTUSemester: %@ with %i courses>",self.name, [self.courses count]];
 }
 
+-(NSUInteger)coursesCount {
+	return [self.courses count];
+}
 
 -(void)parse {
 	if ([self auth]) {
