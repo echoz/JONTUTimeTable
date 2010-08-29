@@ -46,7 +46,7 @@
 	[aCoder encodeInt:year forKey:@"year"];
 }
 
-+(NSArray *)listSemestersOfUser:(NSString *)user password:(NSString *)pass domain:(NSString *)domain {
++(NSArray *)listSemestersOfUser:(NSString *)user password:(NSString *)pass domain:(NSString *)domain parseImmediately:(BOOL)parsenow {
 	JONTUSemester *sem = [[JONTUSemester alloc] init];
 	NSMutableArray *semList = [NSMutableArray array];
 	[sem setUser:user];
@@ -69,6 +69,10 @@
 			[newSem setUser:user];
 			[newSem setPass:pass];
 			[newSem setDomain:domain];
+			
+			if (parsenow) {
+				[newSem parse];
+			}
 			
 			[semList addObject:newSem];
 			[newSem release], newSem = nil;
@@ -112,7 +116,7 @@
 			
 			// handle if its a row with course information
 			if (![[timetableitems objectAtIndex:1] isEqualToString:@""]) {
-				NSLog(@"JONTUTimeTable: Found course %@", [[timetableitems objectAtIndex:1]);
+				NSLog(@"JONTUTimeTable: Found course %@", [timetableitems objectAtIndex:1]);
 
 				JONTUCourse *t_course = [[JONTUCourse alloc] initWithName:[timetableitems objectAtIndex:1]
 														academicUnits:[[timetableitems objectAtIndex:2] intValue]
@@ -128,7 +132,7 @@
 			}
 			
 			// deal with class information
-		   NSLog(@"JONTUTimeTable: Found class %@", [[timetableitems objectAtIndex:9]);
+		   NSLog(@"JONTUTimeTable: Found class %@", [timetableitems objectAtIndex:9]);
 
 			JONTUClass *t_class = [[JONTUClass alloc] initWithType:[timetableitems objectAtIndex:9]
 													classGroup:[timetableitems objectAtIndex:10]

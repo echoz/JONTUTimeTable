@@ -20,7 +20,7 @@
 @property (readonly) NSUInteger year;
 @property (readonly) NSString *semester;
 @property (readonly) NSArray *courses;
-+(NSArray *)listSemestersOfUser:(NSString *)user password:(NSString *)pass domain:(NSString *)domain;
++(NSArray *)listSemestersOfUser:(NSString *)user password:(NSString *)pass domain:(NSString *)domain parseImmediately:(BOOL)parsenow;
 -(id)initWithName:(NSString *)semname year:(NSUInteger)semyear semester:(NSString *)semester;
 -(void)parse;
 @end
