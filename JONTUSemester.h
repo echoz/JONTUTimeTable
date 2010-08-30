@@ -24,4 +24,5 @@
 -(id)initWithName:(NSString *)semname year:(NSUInteger)semyear semester:(NSString *)semester;
 -(void)parse;
 -(NSUInteger)coursesCount;
+-(NSUInteger)totalAU;
 @end

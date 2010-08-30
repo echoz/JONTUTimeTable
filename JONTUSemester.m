@@ -97,6 +97,15 @@
 	return [self.courses count];
 }
 
+-(NSUInteger)totalAU {
+	int totalau = 0;
+	for (JONTUCourse *cse in courses) {
+		totalau += cse.au;
+	}
+	
+	return totalau;
+}
+
 -(void)parse {
 	if ([self auth]) {
 
