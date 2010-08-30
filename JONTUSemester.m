@@ -128,7 +128,10 @@
 															gePreType:[timetableitems objectAtIndex:5]
 														  indexNumber:[timetableitems objectAtIndex:6]
 												   registrationStatus:[timetableitems objectAtIndex:7]
-															   choice:[[timetableitems objectAtIndex:8] intValue]];
+															   choice:[[timetableitems objectAtIndex:8] intValue]
+													pullAditionalInfo:NO];
+				t_course.semester = self;
+				
 				[t_courses addObject:t_course];
 				[t_course release], t_course = nil;
 				t_classes = [NSMutableArray array];

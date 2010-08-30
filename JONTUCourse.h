@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JONTUSemester.h"
 
 @interface JONTUCourse : NSObject <NSCoding> {
 	
@@ -30,6 +31,8 @@
 	NSString *details;
 	
 	NSArray *classes;
+	
+	JONTUSemester *semester;
 }
 
 @property (readonly) NSString *name;
@@ -49,7 +52,9 @@
 @property (readonly) NSArray *notAvailPE;
 @property (readonly) NSString *details;
 
--(id)initWithName:(NSString *)coursename academicUnits:(NSUInteger) acadunit courseType:(NSString *)coursetype suOption:(NSString *)suopt gePreType:(NSString *)gepretype indexNumber:(NSString *)indexNumber registrationStatus:(NSString *)regstat choice:(NSUInteger) coursechoice;
+@property (assign) JONTUSemester *semester;
+
+-(id)initWithName:(NSString *)coursename academicUnits:(NSUInteger) acadunit courseType:(NSString *)coursetype suOption:(NSString *)suopt gePreType:(NSString *)gepretype indexNumber:(NSString *)indexNumber registrationStatus:(NSString *)regstat choice:(NSUInteger) coursechoice pullAditionalInfo:(BOOL)additionalInfo;
 -(NSUInteger)classesCount;
 -(void)parseModuleInfo;
 @end

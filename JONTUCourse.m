@@ -14,9 +14,10 @@
 
 @synthesize name, au, type, su, gepre, index, status, choice, classes;
 @synthesize title, runBy, prerequisite, notAvailPE, notAvailUE, details;
+@synthesize semester;
 
 -(id)initWithName:(NSString *)coursename academicUnits:(NSUInteger) acadunit courseType:(NSString *)coursetype suOption:(NSString *)suopt gePreType:(NSString *)gepretype
-	  indexNumber:(NSString *)indexNumber registrationStatus:(NSString *)regstat choice:(NSUInteger) coursechoice {
+	  indexNumber:(NSString *)indexNumber registrationStatus:(NSString *)regstat choice:(NSUInteger) coursechoice pullAditionalInfo:(BOOL)additionalInfo {
 	
 	if (self = [super init]) {
 		name = [coursename retain];
@@ -28,8 +29,20 @@
 		status = [regstat retain];
 		choice = coursechoice;
 		classes = [[NSArray array] retain];
+		
+		if (additionalInfo) {
+			[self parseModuleInfo];
+		}
 	}
 	
+	return self;
+}
+
+-(id)initWithCourseCode:(NSString *)ccode {
+	if (self = [super init]) {
+		name = [ccode retain];
+		[self parseModuleInfo];
+	}
 	return self;
 }
 
@@ -76,7 +89,12 @@
 }
 
 -(void)parseModuleInfo {
+	NSMutableDictionary *postValues = [NSMutableDictionary dictionary];
+	[postValues setObject:[semester semester] forKey:@"semester"];
+	[postValues setObject:[NSString stringWithFormat:@"%i",[semester year]] forKey:@"acad"];
+	[postValues setObject:[NSString stringWithFormat:@"%i_%@",[semester year], [semester semester]] forKey:@"acadsem"];
 	
+	[semester sendSyncXHRToURL:[NSURL URLWithString:QUERY_URL] postValues:postValues withToken:NO];
 }
 
 -(NSString *)description {
