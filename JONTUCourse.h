@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface JONTUCourse : NSObject <NSCoding> {
+	
+	// from time table
 	NSString *name;
 	NSUInteger au;
 	NSString *type;
@@ -17,6 +19,15 @@
 	NSString *index;
 	NSString *status;
 	NSUInteger choice;
+	
+	// from module information
+	NSString *title;
+	NSString *runBy;
+	NSArray *mutuallyExclusive;
+	NSArray *prerequisite;
+	NSArray *notAvailUE;
+	NSArray *notAvailPE;
+	NSString *details;
 	
 	NSArray *classes;
 }
@@ -31,6 +42,14 @@
 @property (readonly) NSUInteger choice;
 @property (nonatomic, retain) NSArray *classes;
 
+@property (readonly) NSString *title;
+@property (readonly) NSString *runBy;
+@property (readonly) NSArray *prerequisite;
+@property (readonly) NSArray *notAvailUE;
+@property (readonly) NSArray *notAvailPE;
+@property (readonly) NSString *details;
+
 -(id)initWithName:(NSString *)coursename academicUnits:(NSUInteger) acadunit courseType:(NSString *)coursetype suOption:(NSString *)suopt gePreType:(NSString *)gepretype indexNumber:(NSString *)indexNumber registrationStatus:(NSString *)regstat choice:(NSUInteger) coursechoice;
 -(NSUInteger)classesCount;
+-(void)parseModuleInfo;
 @end

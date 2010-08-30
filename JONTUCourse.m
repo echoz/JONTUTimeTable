@@ -8,10 +8,12 @@
 
 #import "JONTUCourse.h"
 
+#define QUERY_URL @"https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SUBJ_CONT.main_display1"
 
 @implementation JONTUCourse
 
 @synthesize name, au, type, su, gepre, index, status, choice, classes;
+@synthesize title, runBy, prerequisite, notAvailPE, notAvailUE, details;
 
 -(id)initWithName:(NSString *)coursename academicUnits:(NSUInteger) acadunit courseType:(NSString *)coursetype suOption:(NSString *)suopt gePreType:(NSString *)gepretype
 	  indexNumber:(NSString *)indexNumber registrationStatus:(NSString *)regstat choice:(NSUInteger) coursechoice {
@@ -42,6 +44,13 @@
 		status = [[aDecoder decodeObjectForKey:@"status"] retain];
 		choice = [aDecoder decodeIntForKey:@"choice"];
 		classes = [[aDecoder decodeObjectForKey:@"classes"] retain];
+		
+		title = [[aDecoder decodeObjectForKey:@"title"] retain];
+		runBy = [[aDecoder decodeObjectForKey:@"runBy"] retain];
+		prerequisite = [[aDecoder decodeObjectForKey:@"prerequisite"] retain];
+		notAvailPE = [[aDecoder decodeObjectForKey:@"notAvailPE"] retain];
+		notAvailUE = [[aDecoder decodeObjectForKey:@"notAvailUE"] retain];
+		details = [[aDecoder decodeObjectForKey:@"details"] retain];
 	}
 	return self;
 }
@@ -56,7 +65,18 @@
 	[aCoder encodeObject:name forKey:@"name"];
 	[aCoder encodeInt:au forKey:@"acadunit"];
 	[aCoder encodeInt:choice forKey:@"choice"];
+	
+	[aCoder encodeObject:title forKey:@"title"];
+	[aCoder encodeObject:runBy forKey:@"runBy"];
+	[aCoder encodeObject:prerequisite forKey:@"prerequisite"];
+	[aCoder encodeObject:notAvailPE forKey:@"notAvailPE"];
+	[aCoder encodeObject:notAvailUE forKey:@"notAvailUE"];
+	[aCoder encodeObject:details forKey:@"details"];
 
+}
+
+-(void)parseModuleInfo {
+	
 }
 
 -(NSString *)description {
@@ -75,6 +95,14 @@
 	[index release], index = nil;
 	[status release], status = nil;
 	[classes release], classes = nil;
+	
+	[title release], title = nil;
+	[runBy release], runBy = nil;
+	[prerequisite release], prerequisite = nil;
+	[notAvailPE release], notAvailPE = nil;
+	[notAvailUE release], notAvailUE = nil;
+	[details release], details = nil;
+	
 	[super dealloc];
 }
 
