@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FC4E24D122E0E53007CE47C /* JONTUSemesterDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4E24C122E0E53007CE47C /* JONTUSemesterDates.m */; };
 		3FF0788312130551006AE7E4 /* JONTUAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0788012130551006AE7E4 /* JONTUAuth.m */; };
 		3FF0788412130551006AE7E4 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0788212130551006AE7E4 /* RegexKitLite.m */; };
 		3FF0788F12130569006AE7E4 /* NSString+htmlentitiesaddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0788812130569006AE7E4 /* NSString+htmlentitiesaddition.m */; };
@@ -36,6 +37,8 @@
 		08FB7796FE84155DC02AAC07 /* JONTUTimeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JONTUTimeTable.m; sourceTree = "<group>"; };
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32A70AAB03705E1F00C91783 /* JONTUTimeTable_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JONTUTimeTable_Prefix.pch; sourceTree = "<group>"; };
+		3FC4E24B122E0E53007CE47C /* JONTUSemesterDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JONTUSemesterDates.h; sourceTree = "<group>"; };
+		3FC4E24C122E0E53007CE47C /* JONTUSemesterDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JONTUSemesterDates.m; sourceTree = "<group>"; };
 		3FF0787F12130551006AE7E4 /* JONTUAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JONTUAuth.h; path = JONTUAuth/JONTUAuth.h; sourceTree = "<group>"; };
 		3FF0788012130551006AE7E4 /* JONTUAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JONTUAuth.m; path = JONTUAuth/JONTUAuth.m; sourceTree = "<group>"; };
 		3FF0788112130551006AE7E4 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = JONTUAuth/RegexKitLite.h; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 				3FF078AD1213069D006AE7E4 /* JONTUCourse.m */,
 				3FF078AE1213069D006AE7E4 /* JONTUSemester.h */,
 				3FF078AF1213069D006AE7E4 /* JONTUSemester.m */,
+				3FC4E24B122E0E53007CE47C /* JONTUSemesterDates.h */,
+				3FC4E24C122E0E53007CE47C /* JONTUSemesterDates.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				3FF078B11213069D006AE7E4 /* JONTUClass.m in Sources */,
 				3FF078B21213069D006AE7E4 /* JONTUCourse.m in Sources */,
 				3FF078B31213069D006AE7E4 /* JONTUSemester.m in Sources */,
+				3FC4E24D122E0E53007CE47C /* JONTUSemesterDates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
