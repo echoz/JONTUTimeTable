@@ -22,6 +22,8 @@ alpha:1.0]
     self = [self stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&" options:NSLiteralSearch range:NSMakeRange(0, [self length])];
     self = [self stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" " options:NSLiteralSearch range:NSMakeRange(0, [self length])];
     self = [self stringByReplacingOccurrencesOfString:@"&Agrave;" withString:@"À" options:NSLiteralSearch range:NSMakeRange(0, [self length])];
+	self = [self stringByReplacingOccurrencesOfString:@"\u00A0" withString:@" " options:NSLiteralSearch range:NSMakeRange(0, [self length])];
+	
 
 	return self;
 }
