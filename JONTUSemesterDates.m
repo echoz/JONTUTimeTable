@@ -14,6 +14,7 @@
 #define REGEX_TABLE_ROW @"<tr\\b[^>]*>(.*?)</tr>"
 #define REGEX_TABLE_CELL @"<td\\b[^>]*>(.*?)</td>"
 #define REGEX_STRIP_HTMLTAGS @"<(.|\\n)*?>"
+#define REGEX_DATE @"([0-9]+)[-| ]+([a-zA-Z]+)[-| ]+([0-9]+)"
 
 @implementation JONTUSemesterDates
 @synthesize year, semesters;
@@ -32,6 +33,31 @@
 			return toMatch;
 	}
 	return nil;
+}
+
+-(NSDate *)dateFromDateString:(NSString *)dateStr {
+	NSArray *months = [NSArray arrayWithObjects:@"JAN",@"FEB",@"MAR",@"APR",@"MAY",@"JUN",@"JUL",@"AUG",@"SEP",@"OCT",@"NOV",@"DEC",nil];
+	NSArray *dateComps = [dateStr captureComponentsMatchedByRegex:REGEX_DATE];
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *datecmp = [[NSDateComponents alloc] init];
+			
+	[datecmp setDay:[[dateComps objectAtIndex:1] intValue]];
+	[datecmp setMonth:[months indexOfObject:[[dateComps objectAtIndex:2] uppercaseString]]+1];
+	
+	NSString *finalDate = [dateComps objectAtIndex:3];
+	
+	if ([finalDate length] == 2) {
+		finalDate = [NSString stringWithFormat:@"20%@", finalDate];
+	}
+	
+	[datecmp setYear:[finalDate intValue]];
+	
+	NSDate *parseDate = [gregorian dateFromComponents:datecmp];
+	[datecmp release];
+	[gregorian release];	
+
+	return parseDate;
+	
 }
 
 -(void)parse {
@@ -55,6 +81,7 @@
 	NSString *currentSemesterName = nil;
 	NSArray *rowcontents;
 	NSString *testSemName;
+	NSString *title;
 	
 	for (int i=0;i<[rows count];i++) {
 		
@@ -63,7 +90,6 @@
 											inArray:semesterNames];
 		
 		if ([[[[rowcontents objectAtIndex:0] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] uppercaseString] hasPrefix:@"EVENTS"]) {
-			NSLog(@"%@", currentSemesterName);
 			[sems setObject:currentSemester forKey:currentSemesterName];
 			i = [rows count];
 			
@@ -79,8 +105,8 @@
 				
 				[currentSemester release], currentSemester = nil;
 				currentSemester = [[NSMutableDictionary dictionary] retain];
-				[currentSemester setObject:[[rowcontents objectAtIndex:1] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] forKey:@"SEM_START"];
-				[currentSemester setObject:[[rowcontents objectAtIndex:2] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] forKey:@"SEM_END"];
+				[currentSemester setObject:[self dateFromDateString:[[rowcontents objectAtIndex:1] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""]] forKey:@"SEM_START"];
+				[currentSemester setObject:[self dateFromDateString:[[rowcontents objectAtIndex:2] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""]] forKey:@"SEM_END"];
 				[currentSemester setObject:[[rowcontents objectAtIndex:3] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] forKey:@"SEM_DURATION"];
 				
 				NSLog(@"Found %@", testSemName);
@@ -91,12 +117,17 @@
 			
 			if ((currentSemester) && ([rowcontents count] == 4)) {
 				// we already have a semster so we must parse data
-				[currentSemester setObject:[[rowcontents objectAtIndex:1] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] 
-									forKey:[NSString stringWithFormat:@"%@_START", [[[rowcontents objectAtIndex:0] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] uppercaseString]]];
-				[currentSemester setObject:[[rowcontents objectAtIndex:2] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] 
-									forKey:[NSString stringWithFormat:@"%@_END", [[[rowcontents objectAtIndex:0] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] uppercaseString]]];
-				[currentSemester setObject:[[rowcontents objectAtIndex:3] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] 
-									forKey:[NSString stringWithFormat:@"%@_DURATION", [[[rowcontents objectAtIndex:0] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] uppercaseString]]];
+				title = [[[rowcontents objectAtIndex:0] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""] uppercaseString];
+				if ([title rangeOfString:@" "].location != NSNotFound) {
+					title = [title substringToIndex:[title rangeOfString:@" "].location];					
+				}
+				
+				[currentSemester setObject:[self dateFromDateString:[[rowcontents objectAtIndex:1] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""]] 
+									forKey:[NSString stringWithFormat:@"%@_START", title]];
+				[currentSemester setObject:[self dateFromDateString:[[rowcontents objectAtIndex:2] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""]]
+									forKey:[NSString stringWithFormat:@"%@_END", title]];
+				[currentSemester setObject:[[rowcontents objectAtIndex:3] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""]
+									forKey:[NSString stringWithFormat:@"%@_DURATION", title]];
 				
 				NSLog(@"Found %@", [[rowcontents objectAtIndex:0] stringByReplacingOccurrencesOfRegex:REGEX_STRIP_HTMLTAGS withString:@""]);
 			}
