@@ -18,5 +18,6 @@
 @property (readonly) NSUInteger year;
 -(id)initWithYear:(NSUInteger)yr;
 -(void)parse;
+-(NSDictionary *)semesterWithCode:(NSString *)code;
 
 @end

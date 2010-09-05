@@ -35,14 +35,37 @@
 	return nil;
 }
 
+-(NSInteger)indexMatchedPrefixString:(NSString *)needle inArray:(NSArray *)haystack {
+	for (int i=0;i<[haystack count];i++) {
+		if ([[haystack objectAtIndex:i] hasPrefix:needle]) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+-(NSDictionary *)semesterWithCode:(NSString *)code {
+	if ([code isEqualToString:@"1"]) {
+		return [semesters objectForKey:@"SEMESTER 1"];
+	} else if ([code isEqualToString:@"2"]) {
+		return [semesters objectForKey:@"SEMESTER 2"];
+	} else if ([code isEqualToString:@"S"]) {
+		return [semesters objectForKey:@"SPECIAL TERM I"];
+	} else if ([code isEqualToString:@"T"]) {
+		return [semesters objectForKey:@"SPECIAL TERM II"];
+	} else {
+		return nil;
+	}
+}
+
 -(NSDate *)dateFromDateString:(NSString *)dateStr {
-	NSArray *months = [NSArray arrayWithObjects:@"JAN",@"FEB",@"MAR",@"APR",@"MAY",@"JUN",@"JUL",@"AUG",@"SEP",@"OCT",@"NOV",@"DEC",nil];
+	NSArray *months = [NSArray arrayWithObjects:@"JANUARY",@"FEBUARY",@"MARCH",@"APRIL",@"MAY",@"JUNE",@"JULY",@"AUGUST",@"SEPTEMBER",@"OCTOBER",@"NOVEMBER",@"DECEMBER",nil];
 	NSArray *dateComps = [dateStr captureComponentsMatchedByRegex:REGEX_DATE];
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 	NSDateComponents *datecmp = [[NSDateComponents alloc] init];
 			
 	[datecmp setDay:[[dateComps objectAtIndex:1] intValue]];
-	[datecmp setMonth:[months indexOfObject:[[dateComps objectAtIndex:2] uppercaseString]]+1];
+	[datecmp setMonth:[self indexMatchedPrefixString:[[dateComps objectAtIndex:2] uppercaseString] inArray:months]+1];
 	
 	NSString *finalDate = [dateComps objectAtIndex:3];
 	
