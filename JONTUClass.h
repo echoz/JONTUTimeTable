@@ -29,4 +29,5 @@
 -(NSUInteger)dayIndex;
 -(NSString *)fromTimeString;
 -(NSString *)toTimeString;
+-(NSArray *)activeWeeks;
 @end

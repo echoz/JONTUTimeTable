@@ -49,6 +49,21 @@
 	[aCoder encodeObject:__time forKey:@"time"];
 }
 
+-(NSArray *)activeWeeks {
+	NSArray *weeks = [remark captureComponentsMatchedByRegex:REGEX_RECURRENCE_THROUGH];
+	if ([weeks count] == 0) {
+		weeks = [[remark stringByReplacingOccurrencesOfString:@"Wk" withString:@""] componentsSeparatedByString:@","];
+	} else {
+		NSMutableArray *tempweeks = [NSMutableArray array];
+		for (int i=[[weeks objectAtIndex:1] intValue];i<[[weeks objectAtIndex:2] intValue]+1;i++) {
+			[tempweeks addObject:[NSNumber numberWithInt:i]];
+		}
+		weeks = tempweeks;
+	}
+	
+	return weeks;
+}
+
 -(NSString *)fromTimeString {
 	return [__time stringByMatching:REGEX_TIME_STRING capture:1];
 }
