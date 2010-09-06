@@ -49,6 +49,24 @@
 	[aCoder encodeObject:__time forKey:@"time"];
 }
 
+-(BOOL)array:(NSArray *)arr hasNumber:(NSNumber *)num {
+	NSNumber *testnumber;
+	
+	for (id n in arr) {
+		if ([n isKindOfClass:[NSString class]]) {
+			testnumber = [NSNumber numberWithInt:[n intValue]];
+		} else {
+			testnumber = n;
+		}					
+
+		if ([testnumber isEqualToNumber:num]) {
+			return YES;
+		}			
+					
+	}
+	return NO;
+}
+
 -(NSArray *)activeWeeks {
 	NSArray *weeks = [remark captureComponentsMatchedByRegex:REGEX_RECURRENCE_THROUGH];
 	if ([weeks count] == 0) {
@@ -61,7 +79,18 @@
 		weeks = tempweeks;
 	}
 	
-	return weeks;
+	NSMutableArray *returnedvalues = [NSMutableArray array];
+	
+	for (int i=0;i<[[weeks lastObject] intValue];i++) {
+		if ([self array:weeks hasNumber:[NSNumber numberWithInt:i+1]]) {
+			[returnedvalues addObject:[NSNumber numberWithBool:YES]];
+		} else {
+			[returnedvalues addObject:[NSNumber numberWithBool:NO]];
+		}
+	}
+	
+	
+	return returnedvalues;
 }
 
 -(NSString *)fromTimeString {
