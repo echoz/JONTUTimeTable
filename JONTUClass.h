@@ -24,8 +24,8 @@
 @property (readonly) NSString *remark;
 
 -(id)initWithType:(NSString *)classtype classGroup:(NSString *)classgroup venue:(NSString *)classvenue remark:(NSString *)classremark day:(NSString *)classday time:(NSString *)classtime;
--(NSDateComponents *) fromTimeUsingCalendar:(NSCalendar *)currentCal;
--(NSDateComponents *) toTimeUsingCalendar:(NSCalendar *)currentCal;
+-(NSDateComponents *) fromTime;
+-(NSDateComponents *) toTime;
 -(NSUInteger)dayIndex;
 -(NSString *)fromTimeString;
 -(NSString *)toTimeString;

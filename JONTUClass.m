@@ -101,21 +101,21 @@
 	return [__time stringByMatching:REGEX_TIME_STRING capture:2];	
 }
 
--(NSDateComponents *) fromTimeUsingCalendar:(NSCalendar *)currentCal {
+-(NSDateComponents *) fromTime {
 	NSDateComponents *comp = [[NSDateComponents alloc] init];
 	[comp setHour:[[__time stringByMatching:REGEX_TIME_SUBUNIT capture:1] integerValue]];
 	[comp setMinute:[[__time stringByMatching:REGEX_TIME_SUBUNIT capture:2] integerValue]];
 	
-	[comp setWeekday:([self dayIndex] + [currentCal firstWeekday])];
+	[comp setWeekday:[self dayIndex]];
 	
 	return [comp autorelease];
 }
--(NSDateComponents *) toTimeUsingCalendar:(NSCalendar *)currentCal {
+-(NSDateComponents *) toTime {
 	NSDateComponents *comp = [[NSDateComponents alloc] init];
 	[comp setHour:[[__time stringByMatching:REGEX_TIME_SUBUNIT capture:3] integerValue]];
 	[comp setMinute:[[__time stringByMatching:REGEX_TIME_SUBUNIT capture:4] integerValue]];
 
-	[comp setWeekday:([self dayIndex] + [currentCal firstWeekday])];
+	[comp setWeekday:[self dayIndex]];
 	
 	return [comp autorelease];
 }
