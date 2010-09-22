@@ -15,6 +15,8 @@
 		3FF078B11213069D006AE7E4 /* JONTUClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF078AB1213069D006AE7E4 /* JONTUClass.m */; };
 		3FF078B21213069D006AE7E4 /* JONTUCourse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF078AD1213069D006AE7E4 /* JONTUCourse.m */; };
 		3FF078B31213069D006AE7E4 /* JONTUSemester.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF078AF1213069D006AE7E4 /* JONTUSemester.m */; };
+		3FFD50BE124A6C2500572AEB /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFD50BB124A6C2500572AEB /* GTMNSString+HTML.m */; };
+		3FFD50BF124A6C2500572AEB /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFD50BD124A6C2500572AEB /* NSString+HTML.m */; };
 		8DD76F9A0486AA7600D96B5E /* JONTUTimeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* JONTUTimeTable.m */; settings = {ATTRIBUTES = (); }; };
 		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		8DD76F9F0486AA7600D96B5E /* JONTUTimeTable.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859EA3029092ED04C91782 /* JONTUTimeTable.1 */; };
@@ -52,6 +54,11 @@
 		3FF078AD1213069D006AE7E4 /* JONTUCourse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JONTUCourse.m; sourceTree = "<group>"; };
 		3FF078AE1213069D006AE7E4 /* JONTUSemester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JONTUSemester.h; sourceTree = "<group>"; };
 		3FF078AF1213069D006AE7E4 /* JONTUSemester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JONTUSemester.m; sourceTree = "<group>"; };
+		3FFD50B9124A6C2500572AEB /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMDefines.h; path = JONTUAuth/MWFeedParser/Classes/GTMDefines.h; sourceTree = "<group>"; };
+		3FFD50BA124A6C2500572AEB /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GTMNSString+HTML.h"; path = "JONTUAuth/MWFeedParser/Classes/GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		3FFD50BB124A6C2500572AEB /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GTMNSString+HTML.m"; path = "JONTUAuth/MWFeedParser/Classes/GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		3FFD50BC124A6C2500572AEB /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HTML.h"; path = "JONTUAuth/MWFeedParser/Classes/NSString+HTML.h"; sourceTree = "<group>"; };
+		3FFD50BD124A6C2500572AEB /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTML.m"; path = "JONTUAuth/MWFeedParser/Classes/NSString+HTML.m"; sourceTree = "<group>"; };
 		8DD76FA10486AA7600D96B5E /* JONTUTimeTable */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JONTUTimeTable; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859EA3029092ED04C91782 /* JONTUTimeTable.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = JONTUTimeTable.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +122,11 @@
 				3FF0788012130551006AE7E4 /* JONTUAuth.m */,
 				3FF0788112130551006AE7E4 /* RegexKitLite.h */,
 				3FF0788212130551006AE7E4 /* RegexKitLite.m */,
+				3FFD50B9124A6C2500572AEB /* GTMDefines.h */,
+				3FFD50BA124A6C2500572AEB /* GTMNSString+HTML.h */,
+				3FFD50BB124A6C2500572AEB /* GTMNSString+HTML.m */,
+				3FFD50BC124A6C2500572AEB /* NSString+HTML.h */,
+				3FFD50BD124A6C2500572AEB /* NSString+HTML.m */,
 			);
 			name = JONTUAuth;
 			sourceTree = "<group>";
@@ -201,6 +213,8 @@
 				3FF078B21213069D006AE7E4 /* JONTUCourse.m in Sources */,
 				3FF078B31213069D006AE7E4 /* JONTUSemester.m in Sources */,
 				3FC4E24D122E0E53007CE47C /* JONTUSemesterDates.m in Sources */,
+				3FFD50BE124A6C2500572AEB /* GTMNSString+HTML.m in Sources */,
+				3FFD50BF124A6C2500572AEB /* NSString+HTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
